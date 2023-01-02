@@ -1,20 +1,12 @@
-<!-- Loop over each object in the blogs array -->
 {{#each blogs as |blog| }}
-<div class="row mb-4 blog">
-  <div class="col-md-5">
+<div>
+  <div>
     <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       <a href="/blog/{{blog.id}}">{{blog.name}}</a>
     </h2>
-    <p>
-      <span for="img" aria-label="author">💲</span>
-      <!-- Pass author value to the helper function -->
-      <span class="author-name">{{blog.author}}</span>
-      needed!
-    </p>
     <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
   </div>
-  <div class="col-md-7">
+  <div>
     <p>
       {{blog.description}}
     </p>
