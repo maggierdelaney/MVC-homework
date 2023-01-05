@@ -6,14 +6,14 @@
   <div>
     <h3>Create a New Blog Post:</h3>
 
-    <form>
+    <form id="blog-submit">
       <div class="form-group">
         <label for="blog-name">Blog name:</label>
-        <textarea class="form-control" id="blog-name" rows="3"></textarea>
+        <textarea id="blog-name" class="form-control" rows="3"></textarea>
       </div>
-      <div>
+      <div class="form-group">
         <label for="blog-desc">Blog description:</label>
-        <textarea class="form-control" id="blog-desc" rows="3"></textarea>
+        <textarea id="blog-desc" class="form-control" rows="3"></textarea>
       </div>
       <div>
         <div class="form-group">
@@ -24,25 +24,29 @@
   </div>
 
   {{#if blogs.length}}
-  <div>
+  <div id="delete-blog">
     <h3>Your blogs:</h3>
 
     {{#each blogs as |blog|}}
     <div>
       <div>
-        <h4><a href="/blog/{{blog.id}}">{{blog.name}}</a></h4>
+        <h4 id="upd-blog-name"><a href="/editblog/{{blog.id}}">{{blog.name}}</a></h4>
       </div>
       <div>
-        <button type="button" class="btn btn-secondary" id="edit-blog" data-id="{{blog.id}}">EDIT</button>
+        <p id="upd-blog-desc">
+          {{blog.description}}
+        </p>
+      </div>
+      <div>
+        <button type="button" class="btn btn-secondary" id="update-blog" data-id="{{blog.id}}">UPDATE</button>
       </div>
       <div>
         <button type="button" class="btn btn-secondary" id="delete-blog" data-id="{{blog.id}}">DELETE</button>
       </div>
     </div>
-
     {{/each}}
-    <h2>you do not currently have any posts</h2>
-    {{/if}}
   </div>
+  {{/if}}
+</div>
 
-  <script src="./js/profile.js"></script>
+<script src="./js/profile.js"></script>
