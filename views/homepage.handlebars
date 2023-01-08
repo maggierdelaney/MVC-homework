@@ -11,5 +11,15 @@
       {{blog.description}}
     </p>
   </div>
+  <div>
+    {{#if comments.length}}
+    {{#each comments as |comment| }}
+    <div>
+      <h2><a href='/blog/{{blog.id}}'>{{name}}</a></h2>
+      <p>{{text}}</p>
+    </div>
+    {{/each}}
+    {{/if}}
+  </div>
 </div>
 {{/each}}

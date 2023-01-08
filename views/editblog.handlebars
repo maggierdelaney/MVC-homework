@@ -1,10 +1,12 @@
 <div class="text-center">
-  <input id="edit-name" value="{{name}}"/>
-  <textarea id="edit-desc">{{description}}</textarea>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <button data-id="{{id}}" id="edit-btn" class="btn btn-primary">EDIT BLOG</button>
-  </p>
+  <form>
+    <input id="edit-name" value="{{name}}" />
+    <textarea id="edit-desc">{{description}}</textarea>
+    <p>Created by {{user.name}} on {{format_date date_created}}</p>
+    <p>
+      <button data-id="{{id}}" id="edit-btn" class="btn btn-primary">UPDATE BLOG</button>
+    </p>
+  </form>
 </div>
 
 <script src="/js/editblog.js"></script>

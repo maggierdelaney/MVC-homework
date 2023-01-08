@@ -21,11 +21,13 @@ const newFormHandler = async (event) => {
   }
 };
 
+
 const updateFormHandler = async (event) => {
   event.preventDefault();
-  const name = document.querySelector('upd-blog-name').value;
-  const description = document.querySelector('upd-blog-desc').value;
+  const name = document.querySelector('#upd-blog-name').value;
+  const description = document.querySelector('#upd-blog-desc').value;
 
+  const id = event.target.getAttribute('data-id');
   const response = await fetch(`/api/blogs/${id}`, {
     method: 'PUT',
     body: JSON.stringify({
@@ -64,7 +66,9 @@ document
   .querySelector('#blog-submit')
   .addEventListener('submit', newFormHandler);
 
-
+document
+  .querySelector('#update-blog')
+  .addEventListener('click', updateFormHandler);
 
 document
   .querySelector('#delete-blog')
