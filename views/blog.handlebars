@@ -2,21 +2,21 @@
   <h2>{{name}}</h2>
   <p>{{description}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <form>
-    <textarea class="textarea" placeholder="Leave a comment" id="comment"></textarea>
-    <button id="comment" class="btn btn-primary">Leave a comment</button>
+  <form id="comment" data-id="{{id}}">
+    <textarea class="textarea" placeholder="Leave a comment" id="comment-text"></textarea>
+    <button type="submit" class="btn btn-primary">Leave a comment</button>
   </form>
 
   <div>
     {{#if comments.length}}
     {{#each comments as |comment| }}
     <div>
-      <h2><a href='/blog/{{blog.id}}'>{{name}}</a></h2>
-      <p>{{text}}</p>
+      <h3>{{comment.name}}</h3>
+      <p>{{comment.text}}</p>
     </div>
     {{/each}}
     {{/if}}
   </div>
 </div>
 
-<script src="./js/comment.js"></script>
+<script src="/js/comment.js"></script>

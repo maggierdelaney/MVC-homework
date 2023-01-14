@@ -15,9 +15,9 @@ router.get('/', async (req, res) => {
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    res.render('homepage', { 
-      blogs, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      blogs,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -37,9 +37,9 @@ router.get('/homepage', async (req, res) => {
 
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    res.render('homepage', { 
-      blogs, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      blogs,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -48,17 +48,24 @@ router.get('/homepage', async (req, res) => {
 
 router.get('/blog/:id', async (req, res) => {
   try {
-    const blogData = await Blog.findByPk(req.params.id, {
+    const blogData = await Blog.findOne({
+      where: {
+        id: req.params.id,
+        // user_id: req.session.user_id;
+      },
       include: [
         {
           model: User,
           attributes: ['name'],
         },
+        {
+          model: Comment
+        }
       ],
-    });
+    })
 
     const blog = blogData.get({ plain: true });
-
+    console.log(blog);
     res.render('blog', {
       ...blog,
       logged_in: req.session.logged_in
@@ -104,9 +111,9 @@ router.get('/', async (req, res) => {
 
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
-    res.render('comment', { 
-      comments, 
-      logged_in: req.session.logged_in 
+    res.render('comment', {
+      comments,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);

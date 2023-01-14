@@ -66,9 +66,9 @@ document
   .querySelector('#blog-submit')
   .addEventListener('submit', newFormHandler);
 
-document
-  .querySelector('#update-blog')
-  .addEventListener('click', updateFormHandler);
+// document
+//   .querySelector('#update-blog')
+//   .addEventListener('click', updateFormHandler);
 
 document
   .querySelector('#delete-blog')

@@ -3,7 +3,6 @@ const { User, Blog, Comment } = require('../models');
 
 const userData = require('./userData.json');
 const blogData = require('./blogData.json');
-const commentData = require('./commentData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -18,17 +17,6 @@ const seedDatabase = async () => {
       ...blog,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
-  }
-
-  const blog = await Blog.findAll();
-
-  //need to seed comments, reference above?
-  for (const comment of commentData) {
-    await Comment.create({
-      ...comment,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-      blog_id: blog[Math.floor(Math.random() * blog.length)].id, 
-    })
   }
 
   process.exit(0);
